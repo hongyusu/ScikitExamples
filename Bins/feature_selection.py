@@ -47,15 +47,11 @@ data_test = fetch_20newsgroups(subset='test', categories=categories, shuffle=Tru
 y_train,y_test = data_train.target, data_test.target
 
 
-
-
-
 vectorizationModels = (
     (HashingVectorizer(stop_words='english', non_negative=True,n_features=2**16),'Hashing'),
     (TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words='english'),'Tfidf'))
 
 rfesvc = SVC(kernel="linear", C=1)
-
 featureSelectionModels = (
     (SelectKBest(chi2, k=5),'Univariance'),
     (LinearSVC(C=0.1, penalty="l1", dual=False),'L1'),
